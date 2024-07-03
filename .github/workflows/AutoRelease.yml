@@ -1,26 +1,29 @@
-# This is a basic workflow to help you get started with the GitHub Auto-Release on Commit Action.
-
-name: AutoRelease
+name: Auto Release
 
 on:
   push:
-    branches: [ stable ]
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   release:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - uses: CupOfTea696/gh-action-auto-release@v1.0.0
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Gitmoji Auto Release
+        id: auto_release
+        uses: n-ramos/gitmoji-auto-release-action@v1
         with:
-          title: "Release: $version"
-          tag: "v$semver"
+          branch: ${{ github.ref }}
           draft: false
-          regex: "/^Release: #{semver}$/i"
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
