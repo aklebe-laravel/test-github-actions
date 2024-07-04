@@ -1,5 +1,8 @@
 # example 1: on push to master
 name: Bump version
+env:
+  DEFAULT_BUMP: 'patch'
+
 on:
   push:
     branches:
