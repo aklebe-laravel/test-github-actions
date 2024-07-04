@@ -1,2 +1,5 @@
 # test-github-actions
-Just test some ...
+Testing auto tags and releases ...
+
+Testing
+https://github.com/anothrNick/github-tag-action/tree/1.69.0
