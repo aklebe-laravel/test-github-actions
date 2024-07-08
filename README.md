@@ -3,7 +3,7 @@ Testing auto tags and releases ...
 
 Testing Actions
 
-1234567
+12345678
 
 https://github.com/rymndhng/release-on-push-action
 
